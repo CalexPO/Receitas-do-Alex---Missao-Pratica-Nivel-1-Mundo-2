@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas práticas do dia-a-dia</title>
+    <link rel="stylesheet" href="/css/formato.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav id="nav">
+        <a href="/home.html">Página Inicial</a>
+        <a href="receitas.html">Receitas</a>
+        <a href="cadastro.html">Cadastro</a>
+    </nav>
+    
+    <main class="container-fluid">
+        <div class="container">
+            <h2>Efetue seu cadastro</h2>
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="cep">CEP:</label>
+                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o CEP">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="rua">Rua:</label>
+                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Digite o nome da rua">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="numero">Número:</label>
+                        <input type="text" class="form-control" id="numero" name="numero" placeholder="Digite o número">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento (opcional)">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite o nome da cidade">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="estado">Estado:</label>
+                        <input type="text" class="form-control" id="estado" name="estado" placeholder="Digite o estado">
+                    </div>
+                </div>
+                <button type="submit" id="submitBtn" class="btn btn-primary col-md-3">Cadastrar</button>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+          var currentPage = location.pathname.split('/').pop();
+          var navLinks = document.querySelectorAll('#nav a');
+
+          navLinks.forEach(function(link) {
+            var linkPage = link.getAttribute('href').split('/').pop();
+            if (linkPage === currentPage) {
+              link.classList.add('active');
+            }
+            });
+
+            $(document).ready(function() {
+                $('#cadastroForm').submit(function(e) {
+                    e.preventDefault();
+
+                    var formData = $(this).serialize();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'send_email.php',
+                        data: formData,
+                        success: function(response) {
+                            alert('Cadastro realizado com sucesso!');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Erro ao cadastrar. Por favor, tente novamente mais tarde.');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $('#submitBtn').click(function() {
+                alert('Cadastro realizado com sucesso!');
+            });
+        </script>
+
+        <div style="height: 100px;"></div>
+    </main>
+        
+    <footer>
+        ©AlexFood 2024
+    </footer>
+</body>
+</html>

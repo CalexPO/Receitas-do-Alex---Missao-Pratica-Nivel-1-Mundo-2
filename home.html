@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas práticas do dia-a-dia</title>
+    <link rel="stylesheet" href="css/formato.css">
+</head>
+<body>
+    <nav id="nav">
+        <a href="home.html">Página Inicial</a>
+        <a href="page/receitas.html">Receitas</a>
+        <a href="page/cadastro.html">Cadastro</a>
+    </nav>
+    
+    <main>
+
+        <div class="container-fluid">
+            <h1 class="container-inicial">
+                <img src="/imagens/produtos/-meal_89750.png" alt="Exemplo" class="example-image">
+                <div class="icon">
+                <i class="fa fa-check"></i>
+                </div>
+                <p>Receitas do Alex.<br>Conheça as deliciosas receitas para o dia a dia.</p> 
+            </h1>         
+        </div>
+    
+    <div style="height: 100px;"></div>
+    </main>
+    
+    <footer>
+        ©AlexFood 2024
+    </footer>
+
+    <script>
+        var currentPage = location.pathname.split('/').pop();
+        var navLinks = document.querySelectorAll('#nav a');
+
+        navLinks.forEach(function(link) {
+          var linkPage = link.getAttribute('href').split('/').pop();
+          if (linkPage === currentPage) {
+            link.classList.add('active');
+          }
+        });
+      </script>
+
+</body>
+</html>
